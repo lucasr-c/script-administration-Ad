@@ -12,8 +12,16 @@ Pour permettre aux utilisateurs d'acceder à un internet, l'intranet, de sécuri
 
 - Quelle est la différence entre une adresse IP dynamique et une réservation DHCP ? 
 
-Un appareil avec une réservation dhcp aura une adresse ip attribué
+Un appareil avec une réservation dhcp aura une adresse ip attribué qui sera fixe alors qu'avec une ip dynamique l'appareil aura une ip qui change automatiquement.
 
 - Que se passe-t-il si deux serveurs DHCP répondent sur le même réseau ?
+
+Sans condition spécifique, un appareil peut se voir attribué la même IP en même temps, l'appareil ne sais pas avec quel serveur dhcp répondre, instabilités.
+
 - Quelle commande PowerShell permet de visualiser les baux DHCP actifs ?
+
+Get-DhcpServerv4Lease
+
+
+
 
