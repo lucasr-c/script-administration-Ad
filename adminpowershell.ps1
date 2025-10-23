@@ -224,3 +224,164 @@ Get-Acl -Path "C:\Partages\RH" | Format-List
 
 # Vérifier les droits du dossier Informatique
 Get-Acl -Path "C:\Partages\Informatique" | Format-List
+
+####5.1   5.1 Script de vérification des droits NTFS sur les dossiers partagés
+# Domaine : test.local
+# Date : 2025-10-23
+
+Write-Host "=== Vérification des droits NTFS sur les dossiers partagés ===" -ForegroundColor Cyan
+
+# Définir le chemin de base des partages
+$cheminBase = "C:\Partages"
+
+# Liste des dossiers à vérifier avec leurs groupes attendus
+$dossiersConfig = @(
+    @{Chemin="$cheminBase\Direction"; GroupeAttendu="GRP_Direction"; Service="Direction"},
+    @{Chemin="$cheminBase\RH"; GroupeAttendu="GRP_RH"; Service="RH"},
+    @{Chemin="$cheminBase\Informatique"; GroupeAttendu="GRP_IT"; Service="Informatique"}
+)
+
+# Tableau pour stocker les résultats
+$resultats = @()
+
+Write-Host "`n--- Analyse détaillée des droits NTFS ---`n" -ForegroundColor Yellow
+
+foreach ($dossierConfig in $dossiersConfig) {
+    $dossier = $dossierConfig.Chemin
+    $service = $dossierConfig.Service
+    
+    Write-Host "Vérification du dossier : $dossier" -ForegroundColor Cyan
+    
+    try {
+        # Vérifier que le dossier existe
+        if (-not (Test-Path $dossier)) {
+            Write-Host "✗ Le dossier $dossier n'existe pas`n" -ForegroundColor Red
+            continue
+        }
+
+        # Récupérer les ACL du dossier
+        $acl = Get-Acl -Path $dossier
+        
+        # Afficher le propriétaire
+        Write-Host "  Propriétaire : $($acl.Owner)" -ForegroundColor White
+        
+        # Vérifier si le groupe attendu a des droits
+        $groupeTrouve = $false
+        
+        # Parcourir toutes les permissions
+        foreach ($access in $acl.Access) {
+            $identite = $access.IdentityReference.Value
+            $droits = $access.FileSystemRights
+            $type = $access.AccessControlType
+            $herite = $access.IsInherited
+            
+            # Créer un objet pour le rapport
+            $objet = [PSCustomObject]@{
+                Service         = $service
+                Dossier         = $dossier
+                Utilisateur_Groupe = $identite
+                Droits          = $droits
+                Type_Acces      = $type
+                Herite          = $herite
+                Propagation     = $access.InheritanceFlags
+            }
+            
+            $resultats += $objet
+            
+            # Afficher les permissions dans la console
+            $couleur = if ($type -eq "Allow") { "Green" } else { "Red" }
+            $heritageInfo = if ($herite) { "(Hérité)" } else { "(Explicite)" }
+            
+            Write-Host "  └─ $identite" -ForegroundColor $couleur
+            Write-Host "     Droits : $droits | Type : $type | $heritageInfo" -ForegroundColor Gray
+            
+            # Vérifier si c'est le groupe attendu
+            if ($identite -like "*$($dossierConfig.GroupeAttendu)*") {
+                $groupeTrouve = $true
+                Write-Host "     ✓ Groupe de sécurité $($dossierConfig.GroupeAttendu) identifié" -ForegroundColor Green
+            }
+        }
+        
+        # Résumé pour ce dossier
+        if ($groupeTrouve) {
+            Write-Host "`n  ✓ Configuration correcte pour $service`n" -ForegroundColor Green
+        } else {
+            Write-Host "`n  ⚠ ATTENTION : Le groupe $($dossierConfig.GroupeAttendu) n'a pas été trouvé !`n" -ForegroundColor Yellow
+        }
+        
+    } catch {
+        Write-Host "✗ Erreur lors de la vérification de $dossier : $($_.Exception.Message)`n" -ForegroundColor Red
+    }
+}
+
+# Affichage du tableau récapitulatif
+Write-Host "`n=== Tableau récapitulatif des autorisations ===" -ForegroundColor Cyan
+$resultats | Format-Table -Property Service, Utilisateur_Groupe, Droits, Type_Acces, Herite -AutoSize
+
+# Statistiques finales
+Write-Host "`n=== Statistiques ===" -ForegroundColor Cyan
+Write-Host "- Nombre total de permissions analysées : $($resultats.Count)" -ForegroundColor Yellow
+Write-Host "- Dossiers vérifiés : $($dossiersConfig.Count)" -ForegroundColor Yellow
+
+# Vérification des groupes de sécurité dans les permissions
+$groupesDetectes = $resultats | Where-Object { $_.Utilisateur_Groupe -like "*GRP_*" }
+Write-Host "- Permissions de groupes de sécurité détectées : $($groupesDetectes.Count)" -ForegroundColor Yellow
+
+Write-Host "`n=== Vérification terminée avec succès ===" -ForegroundColor Green
+
+#### Création de 5 pc par services : 
+
+# Script de création d'ordinateurs dans Active Directory
+
+Import-Module ActiveDirectory
+
+# Définir le chemin du domaine
+$domainPath = "DC=test,DC=local"
+
+# Liste des ordinateurs à créer par service
+$ordinateurs = @(
+    # Service Direction
+    @{Nom="PC-DIR-01"; OU="Direction"; Description="Poste Direction 1"},
+    @{Nom="PC-DIR-02"; OU="Direction"; Description="Poste Direction 2"},
+    @{Nom="PC-DIR-03"; OU="Direction"; Description="Poste Direction 3"},
+    @{Nom="PC-DIR-04"; OU="Direction"; Description="Poste Direction 4"},
+    @{Nom="PC-DIR-05"; OU="Direction"; Description="Poste Direction 5"},
+    
+    # Service RH
+    @{Nom="PC-RH-01"; OU="RH"; Description="Poste Ressources Humaines 1"},
+    @{Nom="PC-RH-02"; OU="RH"; Description="Poste Ressources Humaines 2"},
+    @{Nom="PC-RH-03"; OU="RH"; Description="Poste Ressources Humaines 3"},
+    @{Nom="PC-RH-04"; OU="RH"; Description="Poste Ressources Humaines 4"},
+    @{Nom="PC-RH-05"; OU="RH"; Description="Poste Ressources Humaines 5"},
+    
+    # Service Informatique
+    @{Nom="PC-IT-01"; OU="Informatique"; Description="Poste Informatique 1"},
+    @{Nom="PC-IT-02"; OU="Informatique"; Description="Poste Informatique 2"},
+    @{Nom="PC-IT-03"; OU="Informatique"; Description="Poste Informatique 3"},
+    @{Nom="PC-IT-04"; OU="Informatique"; Description="Poste Informatique 4"},
+    @{Nom="PC-IT-05"; OU="Informatique"; Description="Poste Informatique 5"}
+)
+
+Write-Host "=== Création des ordinateurs dans Active Directory ===" -ForegroundColor Cyan
+
+# Créer chaque ordinateur dans son OU respective
+foreach ($pc in $ordinateurs) {
+    try {
+        # Construire le chemin complet de l'OU
+        $ouPath = "OU=$($pc.OU),$domainPath"
+        
+        # Créer l'ordinateur dans l'Active Directory
+        New-ADComputer -Name $pc.Nom -SAMAccountName $pc.Nom -Path $ouPath -Description $pc.Description -Enabled $true -ErrorAction Stop
+        
+        Write-Host "✓ Ordinateur $($pc.Nom) créé dans l'OU $($pc.OU)" -ForegroundColor Green
+    } catch {
+        Write-Host "✗ Erreur lors de la création de $($pc.Nom) : $($_.Exception.Message)" -ForegroundColor Red
+    }
+}
+
+Write-Host "`n=== Résumé ===" -ForegroundColor Cyan
+Write-Host "- 5 ordinateurs créés dans l'OU Direction (PC-DIR-01 à PC-DIR-05)" -ForegroundColor Yellow
+Write-Host "- 5 ordinateurs créés dans l'OU RH (PC-RH-01 à PC-RH-05)" -ForegroundColor Yellow
+Write-Host "- 5 ordinateurs créés dans l'OU Informatique (PC-IT-01 à PC-IT-05)" -ForegroundColor Yellow
+Write-Host "`nCréation terminée : 15 ordinateurs créés au total !" -ForegroundColor Green
+
