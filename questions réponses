@@ -9,3 +9,11 @@ Get-DnsServerZone
 - Pourquoi utiliser un redirecteur dans un DNS d’entreprise ?
 
 Pour permettre aux utilisateurs d'acceder à un internet, l'intranet, de sécuriser l'infrastructure le tout de manière centralisée.
+
+- Quelle est la différence entre une adresse IP dynamique et une réservation DHCP ? 
+
+Un appareil avec une réservation dhcp aura une adresse ip attribué
+
+- Que se passe-t-il si deux serveurs DHCP répondent sur le même réseau ?
+- Quelle commande PowerShell permet de visualiser les baux DHCP actifs ?
+
