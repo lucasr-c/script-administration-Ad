@@ -1,4 +1,5 @@
-# Script de création d'une étendue DHCP avec 20 adresses IP
+########################### Script de création d'une étendue DHCP avec 20 adresses IP ###########################
+
 # Configuration réseau :
 # - Serveur DHCP : 192.168.12.10
 # - Masque : 255.255.255.0
@@ -196,4 +197,3 @@ Write-Host "  3. Configurer les réservations DHCP pour les serveurs" -Foregroun
 Write-Host "  4. Tester la distribution des adresses IP" -ForegroundColor White
 
 Write-Host "`n=== Configuration DHCP terminée ===" -ForegroundColor Green
-

@@ -1,4 +1,7 @@
-# Script de création d'une zone primaire DNS avec configuration réseau
+
+
+################### Installation DNS création d'une zone primaire DNS avec configuration réseau ###################
+
 # Domaine : test.local
 # Serveur DNS : 192.168.12.10
 # Date : 2025-10-23
