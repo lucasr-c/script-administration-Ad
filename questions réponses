@@ -1,0 +1,11 @@
+- Quelle est la différence entre un enregistrement A et un CNAME ?
+
+CNAME est un alias qui relie un nom à un autre nom alors qu'un enregristrement A est un annuaire qui reli un nom à une IP
+
+- Quelle commande permet de vérifier la liste des zones DNS existantes ?
+
+Get-DnsServerZone
+
+- Pourquoi utiliser un redirecteur dans un DNS d’entreprise ?
+
+Pour permettre aux utilisateurs d'acceder à un internet, l'intranet, de sécuriser l'infrastructure le tout de manière centralisée.
