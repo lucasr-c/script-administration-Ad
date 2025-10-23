@@ -173,3 +173,10 @@ Write-Host "1. Vérifier que le serveur DNS est accessible sur l'adresse 192.168
 Write-Host "2. Configurer les clients pour utiliser ce serveur DNS" -ForegroundColor White
 Write-Host "3. Ajouter les enregistrements DNS des contrôleurs de domaine et serveurs" -ForegroundColor White
 Write-Host "4. Configurer les zones de recherche inversée si nécessaire" -ForegroundColor White
+
+
+#### Vérification du redirecteur : # Afficher tous les redirecteurs DNS
+Get-DnsServerForwarder
+
+# Afficher uniquement les adresses IP
+Get-DnsServerForwarder | Select-Object -ExpandProperty IPAddress
