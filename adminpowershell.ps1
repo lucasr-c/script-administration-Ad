@@ -1,4 +1,4 @@
-####1. 	1. Création des OU : 
+####1. 	1. Création des Unités organisationnelle : 
 
 Import-Module ActiveDirectory
 
@@ -7,7 +7,7 @@ New-ADOrganizationalUnit -Name "Direction" -Path "DC=VotreDomaine,DC=com"
 New-ADOrganizationalUnit -Name "RH" -Path "DC=VotreDomaine,DC=com"
 New-ADOrganizationalUnit -Name "Informatique" -Path "DC=VotreDomaine,DC=com"
 
-####2. 	2. Création des utilisateurs
+####2. 	2. Création de 5 utilisateurs par services
 
 Import-Module ActiveDirectory
 
@@ -47,7 +47,7 @@ foreach ($user in $utilisateurs) {
 
 Write-Host "Creation terminee : 15 utilisateurs crees (5 par OU)"
 
-####3. 	3. Création des groupes :
+####3. 	3. Création des groupes de sécurité :
 
 Import-Module ActiveDirectory
 
@@ -70,7 +70,7 @@ foreach ($groupe in $groupes) {
 
 Write-Host "Création terminée : 3 groupes de sécurité créés"
 
-####4. 	4. Assignation des utilisateurs dans les groupes : 
+####4. 	4. Assignation des utilisateurs dans les groupes de sécurité : 
 
 Import-Module ActiveDirectory
 
@@ -97,7 +97,7 @@ $utilisateurs = @(
     @{SamAccountName="Olivier.Fontaine"; Groupe="GRP_IT"}
 )
 
-# Ajouter chaque utilisateur à son groupe
+# Ajout des utilisateurs dans les groupes de sécurité :
 Write-Host "=== Assignation des utilisateurs aux groupes ===" -ForegroundColor Cyan
 
 foreach ($user in $utilisateurs) {
@@ -119,10 +119,10 @@ Write-Host "`nAssignation terminée !" -ForegroundColor Green
 
 # Script de création de dossiers partagés
 
-# Définir le chemin de base pour les partages (sur le disque C:)
+# Défininition du chemin des partages (sur le disque C:)
 $cheminBase = "C:\Partages"
 
-# Créer le dossier de base s'il n'existe pas
+# Créer le dossier partagé
 if (-not (Test-Path $cheminBase)) {
     New-Item -Path $cheminBase -ItemType Directory | Out-Null
     Write-Host "Dossier de base $cheminBase créé"
@@ -145,7 +145,7 @@ foreach ($service in $services) {
         Write-Host "Le dossier $($service.Nom) existe déjà"
     }
 
-    # Partager le dossier
+    # Partage du dossier
     $partageExistant = Get-SmbShare -Name $service.Share -ErrorAction SilentlyContinue
     
     if ($null -eq $partageExistant) {
