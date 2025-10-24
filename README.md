@@ -5,7 +5,9 @@
 <H1> TP du Jour : Administration Active Directory, DNS et DHCP (PowerShell &
 Automatisation) <H1>
 
-<H2> Après avoir installé Windows Server 2025 sur une machine virtuelle, il était nécessaire d'installer différents rôles comme : l'active directory, DHCP, DNS, RDS <H2>
+<H2> Après avoir installé Windows Server 2025 sur une machine virtuelle, il était nécessaire de lui ajouter via powershell différents rôles comme : l'active directory, DHCP, DNS, RDS <H2>
+
+<H1> Après avoir installé les 3 rôles je vais administrer l'active directory <H1>
 
 <H1> Création de 3 unités organisationnelle : RH, Direction, It <H1>
 
