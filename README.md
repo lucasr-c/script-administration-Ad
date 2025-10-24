@@ -1,4 +1,4 @@
-<H1> Script permettant d'obtenir plusieurs informations sur le pc (CPU, GPU, Ram, adresse IP/MAC, os, ) <H1>
+<H1> Script permettant d'obtenir plusieurs informations sur le pc (CPU, GPU, Ram, adresse IP/MAC, OS, Utilisateur ) <H1>
 
 ![Audit pc](<Capture d'écran 2025-10-23 132400.png>) 
 
