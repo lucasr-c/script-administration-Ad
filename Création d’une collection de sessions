@@ -1,0 +1,32 @@
+# Import du module RemoteDesktop
+Import-Module RemoteDesktop
+
+# Variables
+$CollectionName = "Collection_Bureau"
+$CollectionDescription = "Collection Bureau pour utilisateurs standards"
+$SessionHost = "server2025.test.local"
+$ConnectionBroker = "server2025.test.local"
+$UserGroup = "TEST\Utilisateurs du domaine"
+
+# Créer la collection
+New-RDSessionCollection `
+    -CollectionName $CollectionName `
+    -SessionHost @($SessionHost) `
+    -ConnectionBroker $ConnectionBroker `
+    -CollectionDescription $CollectionDescription
+
+Write-Host "Collection '$CollectionName' créée avec succès." -ForegroundColor Green
+
+# Configurer le groupe d'utilisateurs autorisés
+Set-RDSessionCollectionConfiguration `
+    -CollectionName $CollectionName `
+    -UserGroup @($UserGroup) `
+    -ConnectionBroker $ConnectionBroker
+
+Write-Host "Groupe '$UserGroup' autorisé pour la collection '$CollectionName'." -ForegroundColor Green
+
+# Vérifier la configuration
+Get-RDSessionCollectionConfiguration `
+    -CollectionName $CollectionName `
+    -UserGroup `
+    -ConnectionBroker $ConnectionBroker
