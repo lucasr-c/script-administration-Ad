@@ -26,3 +26,20 @@ Get-WindowsFeature RDS* | Where-Object Installed
 
 Write-Host "`n=== Installation et configuration RDS terminées ===" -ForegroundColor Cyan
 Write-Host "Vous pouvez maintenant accéder à l'interface RD Web Access via : https://$ServerName/RDWeb" -ForegroundColor Yellow
+
+# 6. Vérification de l'installation 
+
+Write-Host "=== Vérification des rôles RDS installés ===" -ForegroundColor Cyan
+
+# Liste des noms de rôles à vérifier
+$rdRoles = @("RDS-RD-Server", "RDS-Web-Access", "RDS-Connection-Broker")
+
+# Récupérer l'état d'installation des rôles
+$installedRoles = Get-WindowsFeature -Name $rdRoles
+
+# Afficher les résultats
+foreach ($role in $installedRoles) {
+    $status = if ($role.Installed) { "Installé" } else { "Non installé" }
+    $color = if ($role.Installed) { "Green" } else { "Red" }
+    Write-Host "$($role.DisplayName) : $status" -ForegroundColor $color
+}
