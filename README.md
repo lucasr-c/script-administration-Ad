@@ -22,6 +22,9 @@ Automatisation) <H1>
 <H1> Création de 3 groupes de sécurité : GRP_Direction, GRP_IT et GRP_RH <H1>
 
 ![Création groupes de sécurité](<3. création des groupes.png>)
+
+<H1> Ajout des utilisateurs dans les groupes de sécurité : GRP_Direction, GRP_IT et GRP_RH <H1>
+
 ![Ajout des utilisateurs dans le groupe direction](<4 ajout des users dans le groupe direction.png>)
 ![Ajout des utilisateurs dans le groupe informatique](<4 ajout des users dans le groupe informatique.png>)
 ![Ajout des utilisateurs dans le groupe RH](<4 ajout des users dans le groupe rh.png>)
