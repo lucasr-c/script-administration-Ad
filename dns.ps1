@@ -177,6 +177,20 @@ Write-Host "2. Configurer les clients pour utiliser ce serveur DNS" -ForegroundC
 Write-Host "3. Ajouter les enregistrements DNS des contrôleurs de domaine et serveurs" -ForegroundColor White
 Write-Host "4. Configurer les zones de recherche inversée si nécessaire" -ForegroundColor White
 
+############################## Ajout de redirecteur vers les sereurs Google : 8.8.8.8 et 8.8.4.4 ####################################
+
+# Variables
+$DNSServers = @("8.8.8.8", "8.8.4.4")
+
+# Configurer les redirecteurs DNS
+Set-DnsServerForwarder -IPAddress $DNSServers -PassThru
+
+Write-Host "Redirecteurs DNS configurés vers Google :" -ForegroundColor Green
+$DNSServers | ForEach-Object { Write-Host "  - $_" -ForegroundColor White }
+
+# Vérifier la configuration
+Write-Host "`nVérification des redirecteurs DNS :" -ForegroundColor Cyan
+Get-DnsServerForwarder | Format-List
 
 #### Vérification du redirecteur : # Afficher tous les redirecteurs DNS
 Get-DnsServerForwarder
