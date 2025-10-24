@@ -1,3 +1,11 @@
+################################# Installation du rôle DHCP via powershell ################################
+
+# Installation du rôle DHCP avec outils d'administration
+Install-WindowsFeature DHCP -IncludeManagementTools
+
+# Autorisation du serveur DHCP dans Active Directory
+Add-DhcpServerInDC -DnsName server2025.test.local
+
 ########################### Script de création d'une étendue DHCP avec 20 adresses IP ###########################
 
 # Configuration réseau :
