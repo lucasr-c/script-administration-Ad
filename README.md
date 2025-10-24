@@ -28,9 +28,23 @@ Automatisation) <H1>
 ![Ajout des utilisateurs dans le groupe direction](<4 ajout des users dans le groupe direction.png>)
 ![Ajout des utilisateurs dans le groupe informatique](<4 ajout des users dans le groupe informatique.png>)
 ![Ajout des utilisateurs dans le groupe RH](<4 ajout des users dans le groupe rh.png>)
+
+<H1> Création de 3 dossiers de partage en fonction des services <H1>
+
 ![Création des dossiers partagés](<5 création des dossiers partagés.png>)
+
+<H1> Attribution des droits NTFS aux 3 goupes de sécurité <H1>
+
 ![Vérification des droits NTF](<5.1 vérification des droits ntfs.png>)
+
+<H1> Création de 5 pc par services <H1>
+
+![PC RH](<6 pc direction.png>)
+![pc direction](<6 pc RH.png>)
 ![Ajout de 5 pc](<6 création de 5 pc.png>)
+
+<H1> Création du DNS <H1>
+
 ![Création dns](<7 powershell dns.png>)
 ![Vérification redirecteur](<8 vérification redirecteur.png>)
 ![Création DHCP + étendue](<9 création étendue.png>)
