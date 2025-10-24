@@ -55,7 +55,7 @@ Automatisation) <H1>
 
 ![Création DHCP + étendue](<9 création étendue.png>)
 
-<H1> TP : Déploiement RDS + configuration <H1>
+<H1> TP : Ajout des 3 rôles nécessaires au bureau à distance : RD Session Host, RD Web Access et RD Connection Broker + configuration <H1>
 
 ![powershell rds](<1 installation des rôles.png>)
 
