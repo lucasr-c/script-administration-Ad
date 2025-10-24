@@ -43,11 +43,14 @@ Automatisation) <H1>
 ![pc direction](<6 pc RH.png>)
 ![Ajout de 5 pc](<6 création de 5 pc.png>)
 
-<H1> Configuration du DNS <H1>
+<H1> Configuration du DNS + redirecteur vers les serveurs Google<H1>
 
 ![Création dns](<7 powershell dns.png>)
 
-
+<H1> Vérification des redirecteurs <H1>
 
 ![Vérification redirecteur](<8 vérification redirecteur.png>)
+
+<H1> Création de l'étendue DHCP <H1>
+
 ![Création DHCP + étendue](<9 création étendue.png>)
