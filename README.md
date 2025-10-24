@@ -59,6 +59,26 @@ Automatisation) <H1>
 
 ![powershell rds](<1 installation des rôles.png>)
 
+<H1> Vérification de l'installation <H1>
 
+![Vérificaiton](<2 vérification.png>)
 
+<H1> Création du déploiement RDS <H1>
 
+![création rds](<3 Création du déploiement RDS.png>)
+
+<H1> Création d'une collection de session <H1>
+
+![collection d'une session](<4 Création d’une collection de sessions.png>)
+
+<H1> Publication d'une application bloc note et calculatrice <H1>
+
+![publication bloc note + calculatrice](<4 publication d'application bloc note et calculatrice.png>)
+
+<H1> Configuraiton du certificat SSL <H1>
+
+![configuration SSL](<5 Configuration du certificat SSL.png>)
+
+<H1> Test de connexion au bureau à distance <H1>
+
+![test bureau à distance](<6 test .png>)
