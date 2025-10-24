@@ -2,7 +2,7 @@
 
 ![Audit pc](<Capture d'écran 2025-10-23 132400.png>) 
 
-<H1> TP 1 : Administration Active Directory, DNS et DHCP (PowerShell &
+<H1> TP : Administration Active Directory, DNS et DHCP (PowerShell &
 Automatisation) <H1>
 
 <H2> Après avoir installé Windows Server 2025 sur une machine virtuelle, il était nécessaire de lui ajouter via powershell différents rôles comme : l'active directory, DHCP, DNS, RDS <H2>
@@ -54,3 +54,5 @@ Automatisation) <H1>
 <H1> Création de l'étendue DHCP <H1>
 
 ![Création DHCP + étendue](<9 création étendue.png>)
+
+
