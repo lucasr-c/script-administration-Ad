@@ -55,4 +55,6 @@ Automatisation) <H1>
 
 ![Création DHCP + étendue](<9 création étendue.png>)
 
+<H1> TP : Déploiement RDS + configuration <H1>
 
+![powershell rds](<1 installation des rôles.png>)
