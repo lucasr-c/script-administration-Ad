@@ -58,3 +58,5 @@ Automatisation) <H1>
 <H1> TP : Déploiement RDS + configuration <H1>
 
 ![powershell rds](<1 installation des rôles.png>)
+
+
