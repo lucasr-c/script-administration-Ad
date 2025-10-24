@@ -2,7 +2,7 @@
 
 ![Audit pc](<Capture d'écran 2025-10-23 132400.png>) 
 
-<H1> TP du Jour : Administration Active Directory, DNS et DHCP (PowerShell &
+<H1> TP 1 : Administration Active Directory, DNS et DHCP (PowerShell &
 Automatisation) <H1>
 
 <H2> Après avoir installé Windows Server 2025 sur une machine virtuelle, il était nécessaire de lui ajouter via powershell différents rôles comme : l'active directory, DHCP, DNS, RDS <H2>
@@ -12,9 +12,13 @@ Automatisation) <H1>
 <H1> Création de 3 unités organisationnelle : RH, Direction, It <H1>
 
 ![Création OU](<2 création d'ou.png>)
+
+<H1> Création de 5 utilisateurs par unités organisationnelle via powershell <H1>
+
 ![Création utilisateur direction](<2.1 création utilisateur direction.png>)
 ![Création utilisateur informatique](<2.1 création utilisateur informatique.png>)
 ![Création utilisateur RH](<2.1 création utilisateur RH.png>)
+
 ![Création groupes de sécurité](<3. création des groupes.png>)
 ![Ajout des utilisateurs dans le groupe direction](<4 ajout des users dans le groupe direction.png>)
 ![Ajout des utilisateurs dans le groupe informatique](<4 ajout des users dans le groupe informatique.png>)
