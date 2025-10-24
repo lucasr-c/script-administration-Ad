@@ -4,7 +4,7 @@
 
 <H1> L'objectif du TP n°1 était d'administrer un active directory : création d'unités organisationnelle, utilisateurs, groupes de sécurité, création de dossiers partagés et leurs droits NTFS <H1>
 
-<H2> Après avoir installé Windows Server 2025 sur une machine virtuelle, il était nécessaire d'installer différents rôles comme : l'active directory, DHCP, DNS, RDS
+<H2> Après avoir installé Windows Server 2025 sur une machine virtuelle, il était nécessaire d'installer différents rôles comme : l'active directory, DHCP, DNS, RDS <H2>
 
 ![Création OU](<2 création d'ou.png>)
 ![Création utilisateur direction](<2.1 création utilisateur direction.png>)
