@@ -1,4 +1,3 @@
-![Audit pc](<1 audit pc.png>)
 ![Audit pc](<Capture d'écran 2025-10-23 132400.png>)
 ![Création OU](<2 création d'ou.png>)
 ![Création utilisateur direction](<2.1 création utilisateur direction.png>)
