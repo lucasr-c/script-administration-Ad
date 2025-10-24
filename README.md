@@ -2,6 +2,8 @@
 
 ![Audit pc](<Capture d'écran 2025-10-23 132400.png>) 
 
+<H1> L'objectif du TP n°1 était d'administrer un active directory : création d'unités organisationnelle, utilisateurs, groupes de sécurité, création de dossiers partagés et leurs droits NTFS <H1>
+
 ![Création OU](<2 création d'ou.png>)
 ![Création utilisateur direction](<2.1 création utilisateur direction.png>)
 ![Création utilisateur informatique](<2.1 création utilisateur informatique.png>)
